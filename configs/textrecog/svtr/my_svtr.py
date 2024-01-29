@@ -53,11 +53,13 @@ dictionary = dict(
 
 kuzushiji_textrecog_data_root = ""
 
+img_path = "/kaggle/input/cropped-kuzushiji-characters/character_images/"
+
 kuzushiji_textrecog_train = dict(
         type="OCRDataset",
         data_root=kuzushiji_textrecog_data_root,
         ann_file="configs/textrecog/ocr_dataset_resized_train.json",
-        data_prefix=dict(img_path="/kaggle/input/brsk-recognition/resized_train_images/"),
+        data_prefix=dict(img_path=img_path),
         pipeline=None)
 
 train_list = [kuzushiji_textrecog_train]
@@ -66,7 +68,7 @@ kuzushiji_textrecog_test = dict(
         type="OCRDataset",
         data_root=kuzushiji_textrecog_data_root,
         ann_file="configs/textrecog/ocr_dataset_resized_validation.json",
-        data_prefix=dict(img_path="/kaggle/input/brsk-recognition/resized_train_images/"),
+        data_prefix=dict(img_path=img_path),
         test_mode=True,
         pipeline=None)
 
