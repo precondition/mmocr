@@ -89,6 +89,78 @@ test_evaluator = val_evaluator
 
 load_from="/kaggle/working/svtr-small_20e_st_mj-35d800d6.pth"
 
+train_pipeline = [
+    dict(type='LoadImageFromFile', ignore_empty=True, min_size=1),
+    dict(type='LoadOCRAnnotations', with_text=True),
+    dict(
+        type='RandomApply',
+        prob=0.4,
+        transforms=[
+            dict(type='TextRecogGeneralAug', ),
+        ],
+    ),
+    dict(
+        type='RandomApply',
+        prob=0.4,
+        transforms=[
+            dict(type='CropHeight', ),
+        ],
+    ),
+    dict(
+        type='ConditionApply',
+        condition='min(results["img_shape"])>10',
+        true_transforms=dict(
+            type='RandomApply',
+            prob=0.4,
+            transforms=[
+                dict(
+                    type='TorchVisionWrapper',
+                    op='GaussianBlur',
+                    kernel_size=5,
+                    sigma=1,
+                ),
+            ],
+        )),
+    dict(
+        type='RandomApply',
+        prob=0.4,
+        transforms=[
+            dict(
+                type='TorchVisionWrapper',
+                op='ColorJitter',
+                brightness=0.5,
+                saturation=0.5,
+                contrast=0.5,
+                hue=0.1),
+        ]),
+    dict(
+        type='RandomApply',
+        prob=0.4,
+        transforms=[
+            dict(type='ImageContentJitter', ),
+        ],
+    ),
+    dict(
+        type='RandomApply',
+        prob=0.4,
+        transforms=[
+            dict(
+                type='ImgAugWrapper',
+                args=[dict(cls='AdditiveGaussianNoise', scale=0.1**0.5)]),
+        ],
+    ),
+    dict(
+        type='RandomApply',
+        prob=0.4,
+        transforms=[
+            dict(type='ReversePixels', ),
+        ],
+    ),
+    dict(type='Resize', scale=(256, 64)),
+    dict(
+        type='PackTextRecogInputs',
+        meta_keys=('img_path', 'ori_shape', 'img_shape', 'valid_ratio'))
+]
 
 # from _base_svtr-tiny.py
 train_dataloader = dict(
@@ -100,7 +172,7 @@ train_dataloader = dict(
     dataset=dict(
         type='ConcatDataset',
         datasets=train_list,
-        pipeline=_base_.train_pipeline))
+        pipeline=train_pipeline))
 
 val_dataloader = dict(
     batch_size=64,
