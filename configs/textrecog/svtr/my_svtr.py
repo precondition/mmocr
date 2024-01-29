@@ -66,7 +66,7 @@ kuzushiji_textrecog_test = dict(
         type="OCRDataset",
         data_root=kuzushiji_textrecog_data_root,
         ann_file="ocr_dataset_resized_validation.json",
-        data_prefix=dict(img="/kaggle/input/brsk-recognition/resized_train_images/")
+        data_prefix=dict(img="/kaggle/input/brsk-recognition/resized_train_images/"),
         test_mode=True,
         pipeline=None)
 
