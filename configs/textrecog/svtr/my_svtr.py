@@ -56,7 +56,7 @@ kuzushiji_textrecog_data_root = ""
 kuzushiji_textrecog_train = dict(
         type="OCRDataset",
         data_root=kuzushiji_textrecog_data_root,
-        ann_file="../ocr_dataset_resized_train.json",
+        ann_file="configs/textrecog/ocr_dataset_resized_train.json",
         data_prefix=dict(img="/kaggle/input/brsk-recognition/resized_train_images/"),
         pipeline=None)
 
@@ -65,7 +65,7 @@ train_list = [kuzushiji_textrecog_train]
 kuzushiji_textrecog_test = dict(
         type="OCRDataset",
         data_root=kuzushiji_textrecog_data_root,
-        ann_file="../ocr_dataset_resized_validation.json",
+        ann_file="configs/textrecog/ocr_dataset_resized_validation.json",
         data_prefix=dict(img="/kaggle/input/brsk-recognition/resized_train_images/"),
         test_mode=True,
         pipeline=None)
