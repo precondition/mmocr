@@ -44,9 +44,16 @@ param_scheduler = [
 
 # my additions
 
-dictionary = dict(
+skip_cat_dictionary = dict(
         type="Dictionary",
         dict_file='{{ fileDirName }}/../../../dicts/SKIP_categories.txt',
+        with_padding=True,
+        with_unknown=True,
+)
+
+relaxed_brsk_dictionary = dict(
+        type="Dictionary",
+        dict_file='{{ fileDirName }}/../../../dicts/relaxed_brsk.txt',
         with_padding=True,
         with_unknown=True,
 )
