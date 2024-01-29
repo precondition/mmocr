@@ -81,7 +81,7 @@ load_from="/kaggle/working/svtr-small_20e_st_mj-35d800d6.pth"
 # from _base_svtr-tiny.py
 train_dataloader = dict(
     batch_size=512,
-    num_workers=24,
+    num_workers=4,
     persistent_workers=True,
     pin_memory=True,
     sampler=dict(type='DefaultSampler', shuffle=True),
@@ -92,7 +92,7 @@ train_dataloader = dict(
 
 val_dataloader = dict(
     batch_size=128,
-    num_workers=8,
+    num_workers=4,
     persistent_workers=True,
     pin_memory=True,
     drop_last=False,
