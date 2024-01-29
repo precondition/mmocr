@@ -14,7 +14,7 @@ model = dict(
 
 
 # svtr-tiny_20e_st_mj.py settings
-train_cfg = dict(type='EpochBasedTrainLoop', max_epochs=20, val_interval=1)
+train_cfg = dict(type='EpochBasedTrainLoop', max_epochs=60, val_interval=1)
 
 optim_wrapper = dict(
     type='OptimWrapper',
@@ -164,7 +164,7 @@ train_pipeline = [
 
 # from _base_svtr-tiny.py
 train_dataloader = dict(
-    batch_size=256,
+    batch_size=384,
     num_workers=4,
     persistent_workers=True,
     pin_memory=True,
@@ -175,7 +175,7 @@ train_dataloader = dict(
         pipeline=train_pipeline))
 
 val_dataloader = dict(
-    batch_size=64,
+    batch_size=128,
     num_workers=4,
     persistent_workers=True,
     pin_memory=True,
