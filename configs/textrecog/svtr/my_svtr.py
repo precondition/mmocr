@@ -1,4 +1,4 @@
-_base_ = ['svtr-tiny_20e_st_mj.py']
+_base_ = ['svtr-small_20e_st_mj.py']
 
 dictionary = dict(
         type="Dictionary",
