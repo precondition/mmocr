@@ -76,7 +76,8 @@ test_list = [kuzushiji_textrecog_test]
 
 val_evaluator = dict(
         dataset_prefixes=['字'],
-        metrics=dict(type="CharMetric"))
+        metrics=[dict(type="CharMetric")]
+    )
 test_evaluator = val_evaluator
 
 load_from="/kaggle/working/svtr-small_20e_st_mj-35d800d6.pth"
