@@ -46,14 +46,14 @@ param_scheduler = [
 
 skip_cat_dictionary = dict(
         type="Dictionary",
-        dict_file='{{ fileDirName }}/../../../dicts/SKIP_categories.txt',
+        dict_file='{{ fileDirname }}/../../../dicts/SKIP_categories.txt',
         with_padding=True,
         with_unknown=True,
 )
 
 relaxed_brsk_dictionary = dict(
         type="Dictionary",
-        dict_file='{{ fileDirName }}/../../../dicts/relaxed_brsk.txt',
+        dict_file='{{ fileDirname }}/../../../dicts/relaxed_brsk.txt',
         with_padding=True,
         with_unknown=True,
 )
