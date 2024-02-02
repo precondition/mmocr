@@ -58,6 +58,14 @@ relaxed_brsk_dictionary = dict(
         with_unknown=True,
 )
 
+specialized_dictionary = dict(
+        type="Dictionary",
+        dict_file='{{ fileDirname }}/../../../dicts/SKIP_category/', # needs to append the correct filename at runtime
+        with_padding=True,
+        with_unknown=True,
+)
+
+
 kuzushiji_textrecog_data_root = ""
 
 img_path = "/kaggle/input/kuzushiji-characters/"
