@@ -68,12 +68,12 @@ specialized_dictionary = dict(
 
 kuzushiji_textrecog_data_root = ""
 
-img_path = "/kaggle/input/kuzushiji-characters/"
+img_path = "kuzushiji-characters/"
 
 kuzushiji_textrecog_train = dict(
         type="OCRDataset",
         data_root=kuzushiji_textrecog_data_root,
-        ann_file="configs/textrecog/textrecog_train_kuzushiji.json",
+        ann_file="mmocr/configs/textrecog/textrecog_train_kuzushiji.json",
         data_prefix=dict(img_path=img_path),
         pipeline=None)
 
@@ -82,7 +82,7 @@ train_list = [kuzushiji_textrecog_train]
 kuzushiji_textrecog_test = dict(
         type="OCRDataset",
         data_root=kuzushiji_textrecog_data_root,
-        ann_file="configs/textrecog/textrecog_validation_kuzushiji.json",
+        ann_file="mmocr/configs/textrecog/textrecog_validation_kuzushiji.json",
         data_prefix=dict(img_path=img_path),
         test_mode=True,
         pipeline=None)
@@ -95,7 +95,7 @@ val_evaluator = dict(
     )
 test_evaluator = val_evaluator
 
-load_from="/kaggle/working/svtr-small_20e_st_mj-35d800d6.pth"
+load_from="svtr-small_20e_st_mj-35d800d6.pth"
 
 train_pipeline = [
     dict(type='LoadImageFromFile', ignore_empty=True, min_size=1),
