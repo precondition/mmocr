@@ -10,7 +10,8 @@ model = dict(
         embed_dims=[96, 192, 256],
         depth=[3, 6, 6],
         num_heads=[3, 6, 8],
-        mixer_types=['Local'] * 8 + ['Global'] * 7))
+        mixer_types=['Local'] * 8 + ['Global'] * 7),
+        max_seq_len=1)
 
 
 # svtr-tiny_20e_st_mj.py settings
