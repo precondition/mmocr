@@ -97,7 +97,19 @@ test_list = [kuzushiji_textrecog_test]
 
 val_evaluator = dict(
         dataset_prefixes=['字'],
-        metrics=[dict(type="CharMetric")]
+        metrics=[dict(
+            type="CharMetric",
+            # The `CharMetric` class processes the results with
+            #
+            #     re.compile(valid_symbol).sub('', text_lower)
+            #
+            # With '[^A-Z^a-z^0-9^\u4e00-\u9fa5]' being the default value
+            # for `valid_symbol`.
+            # Thus, if we don't want any character to be replaced by '',
+            # then the `valid_symbol` pattern should be empty.
+            valid_symbol=""
+            )
+        ]
     )
 test_evaluator = val_evaluator
 
