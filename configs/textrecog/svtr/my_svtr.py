@@ -64,9 +64,11 @@ relaxed_brsk_dictionary = dict(
         with_unknown=True,
 )
 
+skip_cat_dicts_folder_path = '{{ fileDirname }}/../../../dicts/SKIP_category/'
+
 specialized_dictionary = dict(
         type="Dictionary",
-        dict_file='{{ fileDirname }}/../../../dicts/SKIP_category/', # needs to append the correct filename at runtime
+        dict_file=skip_cat_dicts_folder_path, # needs to append the correct filename at runtime
         with_padding=True,
         with_unknown=True,
 )
