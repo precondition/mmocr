@@ -213,3 +213,5 @@ val_dataloader = dict(
         type='ConcatDataset',
         datasets=test_list,
         pipeline=_base_.test_pipeline))
+
+test_dataloader = val_dataloader
